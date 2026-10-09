@@ -1,0 +1,14 @@
+# 개인용 문서와 글쓰기 실행 기록
+docs/
+runs/
+
+# Python 및 운영체제 임시 파일
+__pycache__/
+*.py[cod]
+.DS_Store
+.venv/
+.env
+.env.*
+
+# Claude Code의 기기별 설정
+.claude/settings.local.json

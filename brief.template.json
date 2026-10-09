@@ -1,0 +1,31 @@
+{
+  "run_id": "",
+  "topic": "",
+  "audience": "",
+  "goal": "",
+  "story_plan": {
+    "post_type": "",
+    "reader_change": "",
+    "problem": "",
+    "context": "",
+    "scope": "",
+    "requirements": [],
+    "alternatives_considered": [],
+    "decision_and_reason": "",
+    "one_line_outline": [],
+    "reader_next_action": ""
+  },
+  "target_chars": {"min": 1000, "max": 2600},
+  "verified_materials": [
+    {
+      "id": "",
+      "kind": "",
+      "source": "",
+      "note": ""
+    }
+  ],
+  "constraints": {
+    "banned_terms": [],
+    "must_avoid": ["확인되지 않은 성능 수치", "실행하지 않은 코드를 실행했다고 주장하기"]
+  }
+}
