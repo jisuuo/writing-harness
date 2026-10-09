@@ -15,3 +15,14 @@
 각 에이전트는 `.claude/agents/`의 **서로 다른 시스템 역할 프롬프트**를 사용한다. 모든 Eval은 새 인스턴스에서 시작한다. 한 글의 4축 점수와 하네스 자체의 P1~P6 점수는 구분한다. 게시나 외부 전송은 사용자가 직접 결정한다.
 
 과제용 역검증은 정상 실행과 **별도 실행 폴더**에서 약한 원고를 넣어 1회 수행하고, 비평·평가·검증 결과와 수정한 기준을 남긴다.
+
+## 블로그 게시 (사용자 승인 후에만)
+
+퇴고가 끝난 글은 사용자가 그 글을 명시적으로 승인한 뒤에만 https://jisuuo.github.io/ 에 올린다. REJECT로 끝난 원고는 사용자가 직접 요청할 때만 올린다.
+
+1. 블로그 저장소 `jisuuo/jisuuo.github.io`(Astro, 기본 브랜치 `main`)를 작업용 임시 폴더에 clone하거나 pull한다. `main`에 push하면 `.github/workflows/deploy.yml`이 GitHub Pages로 배포한다.
+2. 승인된 원고(`final.md` 등)를 `src/content/blog/<slug>.md`로 옮긴다. 본문 첫 줄의 `# 제목`은 frontmatter `title`로 옮기고 본문에서 뺀다. frontmatter 필수 항목은 `title`, `description`, `pubDate`이고, 선택 항목은 `tags`, `series`, `seriesOrder`, `updatedDate`, `heroImage`, `draft`다(`src/content.config.ts` 기준). 같은 이름의 파일이 있으면 덮어쓰지 않는다.
+3. 노션 프로필 같은 개인 링크나 회사·고객사 이름이 남아 있는지 확인하고, 있으면 사용자에게 알린다.
+4. `npm ci && npm run build`로 빌드가 되는지 확인한다. 그다음 파일 경로, frontmatter, 글 주소(`https://jisuuo.github.io/blog/<slug>/`)를 보여 주고 승인을 받는다. 글 주소는 push하고 배포가 끝난 뒤에야 열린다는 점도 함께 알린다.
+5. 승인을 받으면 commit하고 `main`에 push한다. 배포 워크플로가 성공했는지, 글 주소가 HTTP 200을 돌려주는지 확인한다.
+6. 해당 실행의 `run_log.md`에 승인 문구, 커밋 해시, 배포 run ID, 확인한 URL을 적는다.
