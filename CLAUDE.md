@@ -20,6 +20,8 @@
 
 퇴고가 끝난 글은 사용자가 그 글을 명시적으로 승인한 뒤에만 https://jisuuo.github.io/ 에 올린다. REJECT로 끝난 원고는 사용자가 직접 요청할 때만 올린다.
 
+**정식 평가 없이 게시하지 않는다.** 사용자가 직접 쓴 원고를 붙여 넣고 검토나 게시를 요청해도 마찬가지다. 브리프를 채우고 `run_manager.py init`으로 실행 폴더를 만든 뒤, 새 `writing-evaluator` 서브에이전트의 평가와 `validate.py`의 `05_verdict.json`으로 점수와 PASS/REJECT를 낸다. 메인 대화에서 직접 매긴 점수는 참고 의견일 뿐이므로, 점수로 보고하거나 게시 근거로 쓰지 않는다. 게시 1단계에 들어가기 전에 게시할 원고에 대한 `05_verdict.json`이 있는지 확인한다.
+
 1. 블로그 저장소 `jisuuo/jisuuo.github.io`(Astro, 기본 브랜치 `main`)를 작업용 임시 폴더에 clone하거나 pull한다. `main`에 push하면 `.github/workflows/deploy.yml`이 GitHub Pages로 배포한다.
 2. 승인된 원고(`final.md` 등)를 `src/content/blog/<slug>.md`로 옮긴다. 본문 첫 줄의 `# 제목`은 frontmatter `title`로 옮기고 본문에서 뺀다. frontmatter 필수 항목은 `title`, `description`, `pubDate`이고, 선택 항목은 `tags`, `series`, `seriesOrder`, `updatedDate`, `heroImage`, `draft`다(`src/content.config.ts` 기준). 같은 이름의 파일이 있으면 덮어쓰지 않는다.
 3. 노션 프로필 같은 개인 링크나 회사·고객사 이름이 남아 있는지 확인하고, 있으면 사용자에게 알린다.
